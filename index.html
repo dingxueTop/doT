@@ -1,0 +1,39 @@
+<html>
+<meta charset="utf-8" />
+<head>
+	<title>doT demo</title>
+</head>
+
+<body>
+	<div id="BOX">内容显示中。。。</div>
+	<script id="neirong" type="text/html">
+        <h1>{{=it.name}}</h1>{{=it.name2}}
+		
+		<button onclick="changeLan()">切换语言</button>
+	</script>
+	<script src="doT-master/doT.min.js" type="text/javascript"></script>
+	<script src="myjs/common.js" type="text/javascript"></script>
+	<script src="myjs/ch.js" type="text/javascript"></script>
+	<script src="myjs/en.js" type="text/javascript"></script>
+	<script>
+		var lantype = 1;//设置默认语言版本
+		var tmpText = doT.template(document.getElementById('neirong').innerHTML);
+		function jiexi()
+		{	
+			var data = getLan(lantype);
+			console.log(data);
+			document.getElementById('BOX').innerHTML = tmpText(data);
+		}
+		jiexi();
+		
+		
+		function changeLan()
+		{
+			lantype = (lantype == 1) ? 2 : 1;
+			//重新解析
+			jiexi();
+		}
+	</script>
+</body>
+
+</html>
